@@ -27,7 +27,7 @@ class AdminController extends Controller
     }
     public function add(){
         return view('add');
-    }y
+    }
     public function destroy($id)
     {
         $diskusi = Diskusi::findOrFail($id);
