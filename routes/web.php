@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DiskusiController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\AdminController;
+
 
 Route::get('/',[DiskusiController::class,'welcome'])->name('welcome');
 
