@@ -9,6 +9,7 @@ class Diskusi extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public $timestamps = true;
     public function comments()
     {
         return $this->hasMany(Comment::class);

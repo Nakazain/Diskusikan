@@ -27,16 +27,26 @@ Route::middleware(['auth', 'userMiddleware'])->group(function () {
     
     Route::get('/dashboard',[UserController::class,'index'])->name('dashboard');
     Route::get('/add',[DiskusiController::class,'add'])->name('add');
-    Route::post('/tambah',[DiskusiController::class,'tambah'])->name('tambah');
     Route::post('/postingan/{id}/comment', [DiskusiController::class, 'storeComment'])->name('postingan.comment');
     Route::delete('/postingan/{id}', [DiskusiController::class, 'destroy'])->name('postingan.destroy');
-
-
+    
+    
 });
+
+
 
 // Route Buat Atmin
 Route::middleware(['auth', 'adminMiddleware'])->group(function () {
     
     Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('/admin/diskusi',[AdminController::class,'diskusi'])->name('admin.diskusi');
+    Route::get('/admin/add',[AdminController::class,'add'])->name('add');
+    Route::get('/admin/pengguna',[AdminController::class,'pengguna'])->name('admin.pengguna');
+    Route::delete('/postingan/{id}', [AdminController::class, 'destroy'])->name('postingan.destroy');
+    Route::get('/hapususer/{id}',[AdminController::class,"hapususer"])->name("hapususer");
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::post('/tambah',[DiskusiController::class,'tambah'])->name('tambah');
+    Route::post('/postingan/{id}/comment', [DiskusiController::class, 'storeComment'])->name('postingan.comment');
 });

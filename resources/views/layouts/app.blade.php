@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <link rel="icon" href="/img/logo.png">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -32,5 +33,10 @@
                 {{ $slot }}
             </main>
         </div>
+        <footer class="text-white py-4" style="background-color: oklhc">
+            <div class="container mx-auto text-center">
+                <p>&copy; 2024 Diskusikan. All rights reserved.</p>
+            </div>
+        </footer>
     </body>
 </html>

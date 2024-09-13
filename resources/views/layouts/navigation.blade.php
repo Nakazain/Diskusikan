@@ -43,7 +43,7 @@
                 <x-nav-link href="/admin/diskusi" :active="request()->routeIs('admin.diskusi')">
                     {{ __('Kelola Diskusi') }}
                 </x-nav-link>
-                <x-nav-link href="#" :active="request()->routeIs('admin.diskusi')">
+                <x-nav-link href="/admin/pengguna" :active="request()->routeIs('admin.pengguna')">
                     {{ __('Pengguna') }}
                 </x-nav-link>
                 @endif
@@ -52,9 +52,6 @@
                 @if (Auth::user()->usertype == 'user')
                 <x-nav-link href="/diskusi" :active="request()->routeIs('diskusi','postingan')">
                     {{ __('Diskusi') }}
-                </x-nav-link>
-                <x-nav-link href="#" :active="request()->routeIs('masalah')">
-                    {{ __('Ada masalah') }}
                 </x-nav-link>
                 @endif
             </div>

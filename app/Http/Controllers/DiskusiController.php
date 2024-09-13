@@ -44,14 +44,16 @@ class DiskusiController extends Controller
         if ($request->file('image')) {
             $imagePath = $request->file('image')->store('diskusis', 'public');
             
-            DB::table('diskusis')->insert([
+            Diskusi::create([
                 'user_id'=> Auth::id(),
                 'username' => $request->username,
                 'judul' => $request->judul,
                 'deskripsi' => $request->deskripsi,
                 'image' => $imagePath
             ]);
-
+            if (Auth::user()->usertype == 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
             return redirect()->route('dashboard');
     }
     

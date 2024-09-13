@@ -2,24 +2,24 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class commentForm extends Component
+class CommentForm extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $action;
+    public $method;
+    public $buttonText;
+    public $placeholder;
+
+    public function __construct($action = '#', $method = 'POST', $buttonText = 'Komentar', $placeholder = 'Ikut berdiskusi...')
     {
-        //
+        $this->action = $action;
+        $this->method = $method;
+        $this->buttonText = $buttonText;
+        $this->placeholder = $placeholder;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function render()
     {
         return view('components.comment-form');
     }
