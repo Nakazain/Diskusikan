@@ -46,12 +46,18 @@
                 <x-nav-link href="/admin/pengguna" :active="request()->routeIs('admin.pengguna')">
                     {{ __('Pengguna') }}
                 </x-nav-link>
+                <x-nav-link href="/admin/masalah" :active="request()->routeIs('admin.masalah')">
+                    {{ __('Masalah Pengguna') }}
+                </x-nav-link>
                 @endif
 
                 {{-- Navbar Pengguna --}}
                 @if (Auth::user()->usertype == 'user')
                 <x-nav-link href="/diskusi" :active="request()->routeIs('diskusi','postingan')">
                     {{ __('Diskusi') }}
+                </x-nav-link>
+                <x-nav-link href="/masalah" :active="request()->routeIs('masalah','masalah')">
+                    {{ __('Ada masalah') }}
                 </x-nav-link>
                 @endif
             </div>

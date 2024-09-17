@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Diskusi;
+use App\Models\Masalah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,28 @@ class DiskusiController extends Controller
             $posts = Diskusi::latest()->get();
             return view('diskusi', compact('posts'));
         }
+
+    public function masalah(){
+            return view('masalah');
+        }
+
+    public function laporkan(Request $request){
+        $request->validate([
+            'username'=>('required'),
+            'judul'=>('required'),
+            'deskripsi'=>('required'),
+        ]);   
+        Masalah::create([
+            'user_id'=> Auth::id(),
+            'username' => $request->username,
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->route('welcome');
+        }
     
     public function welcome(){
-            $posts = Diskusi::paginate('2');
+            $posts = Diskusi::latest()->paginate('2');
             return view('landpage', compact('posts'));
         }
     
@@ -29,21 +49,12 @@ class DiskusiController extends Controller
             'username'=>('required'),
             'judul'=>('required'),
             'deskripsi'=>('required'),
-            'image'=>('required')
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048' 
         ]);   
-        
-        // $imagePath = $this->storeImage($request->file('image'));
-        // Diskusi::create([
-        //     'user_id'=> Auth::id(),
-        //     'username' => $request->username,
-        //     'judul' => $request->judul,
-        //     'deskripsi' => $request->deskripsi,
-        //     'image' => $imagePath
-        //     ]);
-            
+        $imagePath = 'kosong';
         if ($request->file('image')) {
             $imagePath = $request->file('image')->store('diskusis', 'public');
-            
+        }
             Diskusi::create([
                 'user_id'=> Auth::id(),
                 'username' => $request->username,
@@ -57,9 +68,8 @@ class DiskusiController extends Controller
             return redirect()->route('dashboard');
     }
     
-}
     public function masuk($id)
-    {
+    {   
         $post = Diskusi::findOrFail($id);
         $comments = $post->comments()->latest()->get();
         return view('postingan', compact('post', 'comments'));
@@ -85,21 +95,33 @@ class DiskusiController extends Controller
     {
         $diskusi = Diskusi::findOrFail($id);
 
-        // Pastikan hanya pemilik postingan yang bisa menghapusnya
         if (Auth::id() === $diskusi->user_id) {
     
-            // Hapus gambar dari storage
             if ($diskusi->image) {
                 Storage::delete('public/' . $diskusi->image);
             }
     
-            // Hapus postingan dari database
             $diskusi->delete();
     
-            return redirect()->route('dashboard')->with('success', 'Postingan berhasil dihapus.');
+            return redirect()->route('dashboard');
         } else {
-            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki izin untuk menghapus postingan ini.');
+            return redirect()->route('dashboard');
         }
+
     }    
+        public function comdestroy($id)
+{
+    $comment = Comment::findOrFail($id);
+    
+    if (Auth::id() === $comment->user_id || Auth::user()->usertype == 'admin') {
+
+        $comment->delete();
+        return redirect()->back();
+
+    }
+
+    return redirect()->back();
+}
+
 }
 

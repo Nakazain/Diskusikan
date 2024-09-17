@@ -8,19 +8,25 @@
         <a href="/login" class="btn btn-outline btn-info m-2">Log in</a>
         <a href="/register" class="btn btn-outline btn-info">Register</a>
         @else
+        @if (Auth::user()->usertype == 'admin')
+        <a href="/admin/dashboard" class="btn btn-outline btn-info mr-2">Dashboard</a>
+        <a href="/admin/diskusi" class="btn btn-outline btn-info">Lihat Postingan pengguna</a>
+        @endif
+        @if (Auth::user()->usertype == 'user')
         <a href="/dashboard" class="btn btn-outline btn-info mr-2">Dashboard</a>
         <a href="/add" class="btn btn-outline btn-info">Tambah Postingan</a>
+        @endif
         @endguest
         
     </center>
     <div class="m-20 mt-40">
         <div class="grid grid-cols-2 gap-10">
             <div>
-            <p class="text-3xl">Halo</p>
-            <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit minus eum distinctio perspiciatis nisi fugiat. Voluptate adipisci ratione architecto debitis perferendis libero ab ex. Quaerat odio nostrum dolores laboriosam officiis.</p>
+            <p class="text-3xl">Apa itu diskusikan?</p>
+            <p class="mt-5">Diskusikan adalah sebuah forum untuk diskusi, Bagi kalian yang masih merasa malu untuk mengutarakan pendapat kalian secara langsung. Tenang, Sekarang telah ada Diskusikan, Kalian tidak perlu berbicara secara langsung, cukup dengan internet dan Diskusikan kalian tidak perlu malu lagi untuk mengutarakan pendapat. </p>
         </div>
         <div class="mb-20">
-            <p class="text-2xl">Beberapa contoh postingan</p>
+            <p class="text-2xl">Beberapa postingan terbaru</p>
             @foreach ($posts as $item)
             <div class="grid grid-cols-1">
             <a href="/postingan/{{ $item->id }}" class="card bg-base-100 w-full shadow-xl rounded-md mt-5">
@@ -37,5 +43,30 @@
         </div>
     </div>
 </div>
-
-</x-app-layout>
+<div class="container mx-10 pb-10">
+    <a class="text-3xl flex justify-center">FAQ</a>
+    <a class="text-2xl flex justify-center mb-5">Frequenly Asked Question</a>
+<div class="join join-vertical w-full">
+    <div class="collapse collapse-arrow join-item border border-info">
+      <input type="checkbox" name="my-accordion-4" />
+      <div class="collapse-title text-xl font-medium">Bagaimana cara membuat akun?</div>
+      <div class="collapse-content">
+        <p>Klik tombol register dan isi sesuai terserah kalian</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow join-item border border-info">
+      <input type="checkbox" name="my-accordion-4" />
+      <div class="collapse-title text-xl font-medium">Bagaimana cara mengelola profil?</div>
+      <div class="collapse-content">
+        <p>Klik pada namakalian di pojok kanan atas pada navbar,klik profile</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow join-item border border-info">
+      <input type="checkbox" name="my-accordion-4" />
+      <div class="collapse-title text-xl font-medium">Bagaimana cara melaporkan masalah atau penyalahgunaan?</div>
+      <div class="collapse-content">
+        <p>Klik "Ada masalah" pada navbar lalu laporkan masalah anda</p>
+      </div>
+    </div>
+</div>
+  </div></x-app-layout>

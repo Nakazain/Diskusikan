@@ -27,6 +27,8 @@ Route::middleware(['auth', 'userMiddleware'])->group(function () {
     
     Route::get('/dashboard',[UserController::class,'index'])->name('dashboard');
     Route::get('/add',[DiskusiController::class,'add'])->name('add');
+    Route::get('/masalah',[DiskusiController::class,'masalah'])->name('masalah');
+    Route::post('/laporkan',[DiskusiController::class,'laporkan'])->name('laporkan');
     Route::post('/postingan/{id}/comment', [DiskusiController::class, 'storeComment'])->name('postingan.comment');
     Route::delete('/postingan/{id}', [DiskusiController::class, 'destroy'])->name('postingan.destroy');
     
@@ -42,11 +44,15 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function () {
     Route::get('/admin/diskusi',[AdminController::class,'diskusi'])->name('admin.diskusi');
     Route::get('/admin/add',[AdminController::class,'add'])->name('add');
     Route::get('/admin/pengguna',[AdminController::class,'pengguna'])->name('admin.pengguna');
+    Route::get('/admin/masalah',[AdminController::class,'masalah'])->name('admin.masalah');
     Route::delete('/postingan/{id}', [AdminController::class, 'destroy'])->name('postingan.destroy');
     Route::get('/hapususer/{id}',[AdminController::class,"hapususer"])->name("hapususer");
+    Route::get('/hapusmasalah/{id}',[AdminController::class,"hapusmasalah"])->name("hapusmasalah");
 });
 
 Route::middleware(['auth'])->group(function(){
     Route::post('/tambah',[DiskusiController::class,'tambah'])->name('tambah');
     Route::post('/postingan/{id}/comment', [DiskusiController::class, 'storeComment'])->name('postingan.comment');
+    Route::delete('/comments/{id}', [DiskusiController::class, 'comdestroy'])->name('comments.destroy');
+
 });
