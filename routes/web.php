@@ -45,9 +45,9 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function () {
     Route::get('/admin/add',[AdminController::class,'add'])->name('add');
     Route::get('/admin/pengguna',[AdminController::class,'pengguna'])->name('admin.pengguna');
     Route::get('/admin/masalah',[AdminController::class,'masalah'])->name('admin.masalah');
-    Route::delete('/postingan/{id}', [AdminController::class, 'destroy'])->name('postingan.destroy');
+    Route::delete('/admin/postingan/{id}', [AdminController::class, 'destroy'])->name('admin.postingan.destroy');
     Route::get('/hapususer/{id}',[AdminController::class,"hapususer"])->name("hapususer");
-    Route::get('/hapusmasalah/{id}',[AdminController::class,"hapusmasalah"])->name("hapusmasalah");
+    Route::get('/hapusmasalah/{id}',[AdminController::class,"hapusmasalah"])->name("hapususer");
 });
 
 Route::middleware(['auth'])->group(function(){

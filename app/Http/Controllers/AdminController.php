@@ -46,7 +46,7 @@ class AdminController extends Controller
         }
             $diskusi->delete();
     
-        return redirect()->route('dashboard')->with('success', 'Postingan berhasil dihapus.');
+        return redirect()->back();
     }
         public function hapususer($id){
         $data = User::find($id);

@@ -61,7 +61,7 @@
                                          <form method="dialog">
                                         <button class="btn btn-warning">Gajadi deh</button>
                                          </form>
-                                        <form action="{{ route('postingan.destroy', $item->id) }}" method="POST">
+                                        <form action="{{ route('admin.postingan.destroy', $item->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                           <button class="btn btn-error">Tentu</button>
