@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex justify-center m-5 mt-16">
-        <div class="grid grid-cols-2">
+        <div class="lg:grid grid-cols-2">
             @guest
             @else
             <a href="/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>

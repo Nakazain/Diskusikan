@@ -32,7 +32,7 @@
                           placeholder="Tulis komentar Anda..."/>
                         </form>
                       @else
-                      <p>Untuk memberikan pendapat <a href="/login">Log in</a> terlebih dahulu</p>
+                      <p>Untuk memberikan pendapat silakan <a class="link hover:text-gray-400" href="/login">Log in</a> terlebih dahulu</p>
                       @endauth
                       <p class="text-2xl font-bold mt-10">Pendapat orang lain</p>
                       @foreach ($comments as $comment)

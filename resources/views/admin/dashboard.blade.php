@@ -9,8 +9,6 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     Selamat datang {{ Auth::user()->name }} Anda Adalah Seorang Admin<br>
-                    <p>Jumlah postinganmu = {{ $jumlah }}</p>
-                    <p>Jumlah pendapat yang diberikan = {{ $comtot }}</p>
                     <a href="/admin/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
                 </div>
             </div>
@@ -19,18 +17,34 @@
         <div class="mx-auto">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    Jumlah postingan serluruh user<br>
-                    <p>Adalah {{ $postot }}</p>
-                    <a href="/admin/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
+                <p class="text-gray-400">Jumlah Diskusi yang kamu posting</p>
+                    <p class="text-4xl">{{ $jumlah }}</p>
                 </div>
             </div>
         </div>
         <div class="max-w-7xl mx-auto">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    Jumlah seluruh user<br>
-                    Adalah {{ $usertot }}</p>
-                    <a href="/admin/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
+                    <p class="text-gray-400">Jumlah pendapat yang diberikan</p>
+                    <p class="text-4xl">{{ $comtot }}</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="max-w-7xl mx-auto columns-2 gap-3 mt-3 sm:px-6 lg:px-8">
+        <div class="mx-auto">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <p class="text-gray-400">Jumlah Diskusi yang dipostingan serluruh user</p>
+                    <p class="text-4xl">{{ $postot }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <p class="text-gray-400">Jumlah seluruh user</p>
+                    <p class="text-4xl">{{ $usertot }}</p>
                 </div>
             </div>
         </div>
@@ -38,8 +52,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-3">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-4 text-gray-900 dark:text-gray-100 text-center">
-                    Postingan yang kamu posting<br>
-                    <a href="/admin/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
+                    Diskusi yang kamu posting<br>
+                    @if ($jumlah == '0')
+                    <p>Kamu belum memposting apapun</p>
+                    @endif
                 </div>
                 <div class="flex justify-center p-4 -mt-6">
                     <div class="grid grid-cols-2">

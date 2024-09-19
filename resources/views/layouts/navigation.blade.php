@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="mx-auto px-4 sm:px-6 w-full lg:px-8 fixed dark:bg-gray-800" style="z-index: 1000" >
+    <div class="mx-auto px-4 sm:px-6 w-full lg:px-8 fixed dark:bg-gray-800 z-50 backdrop-blur" >
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -155,7 +155,7 @@
         </div>
         
         <!-- Responsive Settings Options -->
-        < class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>

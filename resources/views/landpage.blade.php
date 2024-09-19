@@ -20,7 +20,7 @@
         
     </center>
     <div class="m-20 mt-40">
-        <div class="grid grid-cols-2 gap-10">
+        <div class="lg:grid grid-cols-2 gap-10">
             <div>
             <p class="text-3xl">Apa itu diskusikan?</p>
             <p class="mt-5">Diskusikan adalah sebuah forum untuk diskusi, Bagi kalian yang masih merasa malu untuk mengutarakan pendapat kalian secara langsung. Tenang, Sekarang telah ada Diskusikan, Kalian tidak perlu berbicara secara langsung, cukup dengan internet dan Diskusikan kalian tidak perlu malu lagi untuk mengutarakan pendapat. </p>

@@ -31,7 +31,7 @@ class AdminController extends Controller
         return view('admin.pengguna', compact('user'));
     }
     public function masalah(){
-        $user = Masalah::all();
+        $user = Masalah::latest()->get();
         return view('admin.masalah', compact('user'));
     }
     public function add(){

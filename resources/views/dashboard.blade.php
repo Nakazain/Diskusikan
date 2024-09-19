@@ -9,42 +9,42 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     Selamat datang {{ Auth::user()->name }}<br>
-                    <a href="/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto columns-2 gap-3 mt-3 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto lg:columns-2 md:columns-1 gap-3 mt-3 sm:px-6 lg:px-8">
             <div class="mx-auto">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg md:mb-3 sm:mb-3">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                        Jumlah postinganmu<br>
-                        <p>Adalah {{ $jumlah }}</p>
-                        <a href="/admin/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
+                        <p class="text-gray-400">Jumlah Diskusi yang kamu posting</p>
+                        <p class="text-4xl">{{ $jumlah }}</p>
+                        <a href="/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
                     </div>
                 </div>
             </div>
             <div class="max-w-7xl mx-auto">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                        Jumlah pendapat yang diberikan<br>
-                        Adalah {{ $comtot }}</p>
-                        <a href="/admin/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
-                    </div>
+                        <p class="text-gray-400">Jumlah pendapat yang diberikan</p>
+                        <p class="text-4xl">{{ $comtot }}</p> 
+                   </div>
                 </div>
             </div>
             </div>    
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-3">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-4 text-gray-900 dark:text-gray-100 text-center">
-                    Postingan yang kamu posting<br>
-                    <a href="/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
+                    Diskusi yang kamu posting<br>
+                    @if ($jumlah == '0')
+                        <p>Kamu belum memposting apapun</p>
+                    @endif
                 </div>
                 <div class="flex justify-center p-4 -mt-6">
                     <div class="grid grid-cols-2">
                     @foreach ($posts as $item)
                     <div class="card bg-base-100 w-96 shadow-xl rounded-md" style="margin: 20px">
                         <div class="card-body text-white">
-                            <div class="">{{ \Carbon\Carbon::now()->locale('id')->isoFormat(' ddd, D MMMM Y ')}}</div>
+                            <p>{{ \Carbon\Carbon::now()->locale('id')->isoFormat(' ddd, D MMMM Y ')}}</p>
                             <h2 class="card-title line-clamp-1 mt">
                                 {{ $item->judul }}
                             </h2>
