@@ -9,16 +9,12 @@
                         {{ $item->judul }}
                     </h2>
                     <p class="line-clamp-4">{{ $item->deskripsi }}</p>
-                    <!-- Tanggal Postingan -->
-                    <div class="text">{{ \Carbon\Carbon::now()->locale('id')->isoFormat(' ddd, D MMMM Y ')}}</div>
-
-                    <!-- Tombol Lihat Postingan -->
+                    <div class="flex justify-between">
+                        <div class="text">{{ \Carbon\Carbon::now()->locale('id')->isoFormat(' ddd, D MMMM Y ')}}</div>
+                        <div class="flex"><svg class="mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M1.5 4.25c0-.966.784-1.75 1.75-1.75h17.5c.966 0 1.75.784 1.75 1.75v12.5a1.75 1.75 0 0 1-1.75 1.75h-9.69l-3.573 3.573A1.458 1.458 0 0 1 5 21.043V18.5H3.25a1.75 1.75 0 0 1-1.75-1.75ZM3.25 4a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h2.5a.75.75 0 0 1 .75.75v3.19l3.72-3.72a.75.75 0 0 1 .53-.22h10a.25.25 0 0 0 .25-.25V4.25a.25.25 0 0 0-.25-.25Z"/></svg> {{$item->comments_count}}</div>
+                    </div>
                     <a href="/postingan/{{ $item->id }}" class="btn btn-info"> Lihat</a>
-
-                    <!-- Tombol Hapus Postingan -->
                     <button class="btn btn-sm w-full btn-error" onclick="document.getElementById('hapus-{{ $item->id }}').showModal()">Hapus</button>
-
-                    <!-- Modal Hapus -->
                     <dialog id="hapus-{{ $item->id }}" class="modal modal-bottom sm:modal-middle">
                         <div class="modal-box">
                             <h3 class="text-lg font-bold">Yakin mau hapus?</h3>
@@ -28,7 +24,6 @@
                                 <form method="dialog">
                                     <button class="btn btn-warning">Gajadi deh</button>
                                 </form>
-                                <!-- Tombol Hapus dengan Form -->
                                 <form action="{{ route('admin.postingan.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

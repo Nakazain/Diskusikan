@@ -18,7 +18,7 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <p class="text-gray-400">Jumlah Diskusi yang kamu posting</p>
                         <p class="text-4xl">{{ $jumlah }}</p>
-                        <a href="/add" class="btn btn-outline btn-info fixed right-4 bottom-4">Tambahkan Diskusi</a>
+                        <a href="/add" class="animate-bounce btn btn-info fixed right-4 bottom-4 z-10">Tambahkan Diskusi</a>
                     </div>
                 </div>
             </div>
@@ -40,15 +40,15 @@
                     @endif
                 </div>
                 <div class="flex justify-center p-4 -mt-6">
-                    <div class="grid grid-cols-2">
+                    <div class="lg:grid grid-cols-2">
                     @foreach ($posts as $item)
                     <div class="card bg-base-100 w-96 shadow-xl rounded-md" style="margin: 20px">
                         <div class="card-body text-white">
                             <p>{{ \Carbon\Carbon::now()->locale('id')->isoFormat(' ddd, D MMMM Y ')}}</p>
-                            <h2 class="card-title line-clamp-1 mt">
+                            <h2 class="card-title line-clamp-1">
                                 {{ $item->judul }}
                             </h2>
-                            <p class="line-clamp-4">{{ $item->deskripsi }}</p>
+                            <p class="line-clamp-2">{{ $item->deskripsi }}</p>
                             <a href="/postingan/{{ $item->id }}" class="btn btn-info"> Lihat</a>
                                 <button class="btn btn-sm w-full btn-error" onclick="document.getElementById('hapus-{{ $item->id }}').showModal()">Hapus</button>
                                 <dialog id="hapus-{{ $item->id }}" class="modal modal-bottom sm:modal-middle">

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Storage;
 class DiskusiController extends Controller
 {
     public function index(){
-            $posts = Diskusi::latest()->get();
-            return view('diskusi', compact('posts'));
+        $posts = Diskusi::withCount('comments')->latest()->get();
+        return view('diskusi', compact('posts'));
         }
 
     public function masalah(){

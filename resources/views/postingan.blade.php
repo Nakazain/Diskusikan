@@ -38,8 +38,8 @@
                       @foreach ($comments as $comment)
                       <div class="mx-auto border border-info px-6 py-4 rounded-lg my-5">
                         <div class="flex items-center mb-3"><div>
-                                <div class="text-lg font-medium text-white">{{ $comment->username }}</div>
-                                <div class="text-gray-500">{{ \Carbon\Carbon::parse($comment->created_at)->locale('id')->diffForHumans()}}</div>
+                          <div class="text-lg font-medium text-white">{{ $comment->username }}</div>
+                          <div class="text-gray-500">{{ \Carbon\Carbon::parse($comment->created_at)->locale('id')->diffForHumans()}}</div>
                             </div>
                         </div>
                         <p class="text-lg leading-relaxed mb-3">{{ $comment->comment }}</p>
@@ -47,7 +47,7 @@
                             <div class="flex items-center">
                               @guest
                               @else
-                              @if(Auth::check() && Auth::id() === $comment->user_id || Auth::user()->usertype == 'admin')
+                              @if(Auth::check() && Auth::id() === $comment->user_id || $post->username == Auth::user()->name || Auth::user()->usertype == 'admin' )
                               <button class="text text-red-500 hover:text-gray-700" onclick="document.getElementById('hapusmd-{{ $comment->id }}').showModal()">Hapus</button>
                               <dialog id="hapusmd-{{ $comment->id }}" class="modal modal-bottom sm:modal-middle">
                                 <div class="modal-box">

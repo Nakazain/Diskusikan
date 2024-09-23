@@ -16,6 +16,7 @@ class Comment extends Model
     ];
     public function diskusi(){
     return $this->belongsTo(Diskusi::class);
+    
 }
 }
 

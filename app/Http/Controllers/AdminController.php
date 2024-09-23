@@ -23,7 +23,7 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('posts','jumlah','postot','usertot','comtot'));
     }
     public function diskusi(){
-        $posts = Diskusi::latest()->get();
+        $posts = Diskusi::withCount('comments')->latest()->get();
         return view('admin.diskusi', compact('posts'));
     }
     public function pengguna(){

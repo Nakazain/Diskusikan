@@ -29,7 +29,6 @@ Route::middleware(['auth', 'userMiddleware'])->group(function () {
     Route::get('/add',[DiskusiController::class,'add'])->name('add');
     Route::get('/masalah',[DiskusiController::class,'masalah'])->name('masalah');
     Route::post('/laporkan',[DiskusiController::class,'laporkan'])->name('laporkan');
-    Route::post('/postingan/{id}/comment', [DiskusiController::class, 'storeComment'])->name('postingan.comment');
     Route::delete('/postingan/{id}', [DiskusiController::class, 'destroy'])->name('postingan.destroy');
     
     
