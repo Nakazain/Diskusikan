@@ -24,7 +24,7 @@
               <th>{{$item->judul}}</th>
               <th>{{$item->deskripsi}}</th>
               <th>{{$item->created_at}}</th>
-              <th><a href="/hapusmasalah/{{$item->id}}" class="btn btn-warning btn-sm">Terselesaikan</a></th>
+              <th><a href="/hapusmasalah/{{$item->id}}" class="btn btn-warning btn-sm">Selesai</a></th>
             </tr>
             @endforeach
           </tbody>

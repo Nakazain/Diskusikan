@@ -6,8 +6,8 @@
             <a href="/add" class="btn animate-bounce hover:no-animation btn-info fixed right-4 bottom-4 z-10">Tambahkan Diskusi</a>
             @endguest
         @foreach ($posts as $item)
-        <a href="/postingan/{{ $item->id }}" class="card bg-base-100 w-96 shadow-xl rounded-md" style="margin: 20px">
-            <div class="card-body text-white h-auto hover:outline rounded-sm">
+        <a href="/postingan/{{ $item->id }}" class="card bg-base-300 dark:bg-base-100 w-96 shadow-xl rounded-md" style="margin: 20px">
+            <div class="card-body dark:text-white h-auto hover:outline hover:outline-amber-500 rounded-md">
                 <h2 class="card-title line-clamp-2 pb-1">
                     {{ $item->judul }}
                 </h2>

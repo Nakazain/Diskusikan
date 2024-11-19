@@ -44,6 +44,7 @@ class DiskusiController extends Controller
     public function add(){
         return view('add');
     }
+    
     public function tambah(Request $request){
         $request->validate([
             'username'=>('required'),

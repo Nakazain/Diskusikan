@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="flex justify-center ml-20 mr-20 mt-20 text-white">
+    <div class="flex justify-center ml-20 mr-20 mt-20 dark:text-white">
       <div class="col w-full">
-        <div class="card bg-base-100 w-full shadow-xl rounded-md">
+        <div class="card bg-base-300 dark:bg-base-100 w-full shadow-xl rounded-md">
             <div class="card-body">
                 <h2 class="card-title text-2xl font-bold">
                   {{ $post->judul }}
@@ -18,7 +18,7 @@
                 <p class="text-lg mt-4">{{ $post->deskripsi }}</p>
             </div>
           </div>
-            <div class="card bg-base-100 w-full shadow-xl mt-6 rounded-md mb-10">
+            <div class="card bg-base-300 dark:bg-base-100 w-full shadow-xl mt-6 rounded-md mb-10">
               <div class="card-body">
                 <p class="card-title text-2xl">Berikan pendapatmu</p>
                 <div class="justify-start">
@@ -36,9 +36,9 @@
                       @endauth
                       <p class="text-2xl font-bold mt-10">Pendapat orang lain</p>
                       @foreach ($comments as $comment)
-                      <div class="mx-auto border border-info px-6 py-4 rounded-lg my-5">
+                      <div class="mx-auto border border-amber-500 dark:border-info px-6 py-4 rounded-lg my-5">
                         <div class="flex items-center mb-3"><div>
-                          <div class="text-lg font-medium text-white">{{ $comment->username }}</div>
+                          <div class="text-lg font-medium dark:text-white">{{ $comment->username }}</div>
                           <div class="text-gray-500">{{ \Carbon\Carbon::parse($comment->created_at)->locale('id')->diffForHumans()}}</div>
                             </div>
                         </div>
